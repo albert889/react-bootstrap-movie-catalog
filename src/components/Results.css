@@ -9,3 +9,8 @@
     font-size: x-large;
     color: white;
 }
+
+.btn-group {
+    margin-left: 80px;
+    background-color: white;
+}
