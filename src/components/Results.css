@@ -11,6 +11,12 @@
     color: white;
 }
 
+.searchMovie {
+    font-size: large;
+    color: black;
+    background-color: antiquewhite;
+}
+
 .btn-group {
     background-color: white;
 }
