@@ -3,7 +3,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React, { useState, useEffect } from "react";
 import "./Results.css";
 import VideoCard from "./VideoCard";
-import axios from "../services/axios";
+import axios, { searchMovie } from "../services/axios";
 import FlipMove from "react-flip-move";
 import SearchIcon from "@material-ui/icons/Search";
 
@@ -67,13 +67,24 @@ const Results = ({ selectedGenre }) => {
         e.target.style.transform = 'scale(1.2)'
     })
 }
+   const search = async (q) => {
+    if (q.length > 3) {
+      const query = await searchMovie(q)
+      setMovies(query.results)
+    }
+  }
+   
   return (
     <div className="mt-3">
         <div className="d-flex justify-content-between">
             <div>
                 <div className="input-group">
-                    <span className="input-group-text bg-white border-0"><SearchIcon /></span>
-                    <input placeholder="Cari disini ..." type="text" className="form-control"/>
+                    <span className="input-group-text border-0"><SearchIcon /></span>
+                    <input 
+                    placeholder="Cari disini ..."  
+                    className="searchMovie"
+                    onChange={({ target }) => search(target.value)}
+                    />
                 </div>
             </div>
             <div className="d-flex flex-column">
