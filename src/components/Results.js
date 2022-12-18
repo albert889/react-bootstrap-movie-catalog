@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React, { useState, useEffect } from "react";
 import "./Results.css";
 import VideoCard from "./VideoCard";
@@ -12,6 +14,7 @@ const Results = ({ selectedGenre }) => {
 
   useEffect(() => {
     setSortBy("")
+    setDefaultBtnSort()
     axios
       .get(selectedGenre)
       .then((result) => {
@@ -21,6 +24,14 @@ const Results = ({ selectedGenre }) => {
         setMovies(undefined);
       });
   }, [selectedGenre]);
+
+  const setDefaultBtnSort =() =>{
+    const btnChildren = document.querySelector('.btn-group').children
+    for (const child of btnChildren) {
+      child.style.opacity = '0.7'
+      child.style.transform = 'scale(1.0)'
+    }
+  }
 
   const handleSort = (select, e) => {
     const btnChildren = document.querySelector('.btn-group').children
@@ -38,11 +49,12 @@ const Results = ({ selectedGenre }) => {
     }
     setSortBy(select)
     movies.sort((a, b) => 
-    {switch(sortby) {
+    {
+      switch(sortby) {
       case SORT_BY_AZ:
-        return (a.title > b.title)|| (a.name > b.name)? -1: 1;
+        return (a.title > b.title) || (a.name > b.name) || (a.original_name > b.original_name)? -1: 1;
       case SORT_BY_ZA:
-        return (a.title > b.title) || (a.name > b.name)? 1: -1;
+        return (a.title > b.title) || (a.name > b.name) || (a.original_name > b.original_name)? 1: -1;
       default:
         return 0;
     }
@@ -56,9 +68,14 @@ const Results = ({ selectedGenre }) => {
 }
   return (
     <div>
-      <div class="btn-group" role="group" aria-label="sort">
-        <button type="button" class="btn btn-default" onClick={(e) => handleSort(SORT_BY_AZ, e)}> A to Z</button>
-        <button type="button" class="btn btn-default" onClick={(e) => handleSort(SORT_BY_ZA, e)}> Z to A</button>
+      <div class="row">
+      <div class="col-md-4">
+          <h6 className="text-sorting">Sorting</h6>
+          <div class="btn-group" role="group" aria-label="sort">
+            <button type="button" class="btn btn-default" onClick={(e) => handleSort(SORT_BY_AZ, e)}> A to Z</button>
+            <button type="button" class="btn btn-default" onClick={(e) => handleSort(SORT_BY_ZA, e)}> Z to A</button>
+            </div>
+      </div>
       </div>
       <div className="results">
         <FlipMove>
