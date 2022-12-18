@@ -7,14 +7,18 @@ import LiveTvIcon from "@material-ui/icons/LiveTv";
 import VideoLibraryIcon from "@material-ui/icons/VideoLibrary";
 import SearchIcon from "@material-ui/icons/Search";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="header-icons">
         <div className="header-icon header-icon-active">
+          <Link to={`/`} className='cok'>
+          
           <HomeIcon />
           <p>Home</p>
+          </Link>
         </div>
       </div>
       <img width={75} alt="logo" src={logo} />

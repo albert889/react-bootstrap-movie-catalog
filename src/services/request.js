@@ -12,4 +12,5 @@ export default {
   dramaMovies: `/discover/movie?api_key=${API_KEY}&with_genres=18`,
   TVMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10770`,
   animationMovies: `/discover/movie?api_key=${API_KEY}&with_genres=16`,
+  
 };
