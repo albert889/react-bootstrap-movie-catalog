@@ -11,6 +11,10 @@
 }
 
 .btn-group {
-    margin-left: 80px;
+    margin-left: 50px;
     background-color: white;
+}
+.text-sorting {
+    margin-left: 50px;
+    color: white;
 }
