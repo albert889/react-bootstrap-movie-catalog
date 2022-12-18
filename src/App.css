@@ -1,4 +1,6 @@
 .App {
   /* width: 100vw; */
-  background-image: linear-gradient(to right, #000000, #000000, #000000);
+  background: black;
+  width: 1280px;
+  margin: 0 auto;
 }

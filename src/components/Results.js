@@ -5,6 +5,7 @@ import "./Results.css";
 import VideoCard from "./VideoCard";
 import axios from "../services/axios";
 import FlipMove from "react-flip-move";
+import SearchIcon from "@material-ui/icons/Search";
 
 const Results = ({ selectedGenre }) => {
   const [movies, setMovies] = useState([]);
@@ -67,15 +68,20 @@ const Results = ({ selectedGenre }) => {
     })
 }
   return (
-    <div>
-      <div class="row">
-      <div class="col-md-4">
-          <h6 className="text-sorting">Sorting</h6>
-          <div class="btn-group" role="group" aria-label="sort">
-            <button type="button" class="btn btn-default" onClick={(e) => handleSort(SORT_BY_AZ, e)}> A to Z</button>
-            <button type="button" class="btn btn-default" onClick={(e) => handleSort(SORT_BY_ZA, e)}> Z to A</button>
+    <div className="mt-3">
+        <div className="d-flex justify-content-between">
+            <div>
+                <div className="input-group">
+                    <span className="input-group-text bg-white border-0"><SearchIcon /></span>
+                    <input placeholder="Cari disini ..." type="text" className="form-control"/>
+                </div>
             </div>
-      </div>
+            <div className="d-flex flex-column">
+                <div className="btn-group" role="group" aria-label="sort">
+                    <button type="button" className="btn btn-default" onClick={(e) => handleSort(SORT_BY_AZ, e)}> A to Z</button>
+                    <button type="button" className="btn btn-default" onClick={(e) => handleSort(SORT_BY_ZA, e)}> Z to A</button>
+                </div>
+            </div>
       </div>
       <div className="results">
         <FlipMove>

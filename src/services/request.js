@@ -1,4 +1,4 @@
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = "bbd4cbf30b4db1252182844eded615bf";
 
 export default {
   trendingMovies: `/trending/all/week?api_key=${API_KEY}`,

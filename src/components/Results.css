@@ -1,7 +1,8 @@
-.results > div { 
+.results > div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 30px;
     padding-bottom: 50px;
 }
 
@@ -11,10 +12,8 @@
 }
 
 .btn-group {
-    margin-left: 50px;
     background-color: white;
 }
 .text-sorting {
-    margin-left: 50px;
     color: white;
 }

@@ -16,28 +16,8 @@ const Header = () => {
           <HomeIcon />
           <p>Home</p>
         </div>
-        <div className="header-icon">
-          <FlashOnIcon />
-          <p>Trending</p>
-        </div>
-        <div className="header-icon">
-          <LiveTvIcon />
-          <p>Verified</p>
-        </div>
-        <div className="header-icon">
-          <VideoLibraryIcon />
-          <p>Collections</p>
-        </div>
-        <div className="header-icon">
-          <SearchIcon />
-          <p>Search</p>
-        </div>
-        <div className="header-icon">
-          <PersonOutlineIcon />
-          <p>Account</p>
-        </div>
       </div>
-      <img alt="logo" src={logo} />
+      <img width={75} alt="logo" src={logo} />
     </div>
   );
 };
