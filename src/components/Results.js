@@ -8,18 +8,18 @@ import FlipMove from "react-flip-move";
 import SearchIcon from "@material-ui/icons/Search";
 
 const Results = ({ selectedGenre }) => {
-  const [movies, setMovies] = useState([]);
-  const [sortby, setSortBy] = useState([]);
   const SORT_BY_AZ = "AZ"
   const SORT_BY_ZA = "ZA"
+  const [movies, setMovies] = useState([]);
+  const [sortby, setSortBy] = useState(SORT_BY_AZ);
 
   useEffect(() => {
-    setSortBy("")
+    setSortBy(SORT_BY_AZ)
     setDefaultBtnSort()
     axios
       .get(selectedGenre)
       .then((result) => {
-        setMovies(result.data.results);
+        setMovies(result.data.results.sort((a, b) => (a.title > b.title)? 1: -1));
       })
       .catch(() => {
         setMovies(undefined);
@@ -49,7 +49,7 @@ const Results = ({ selectedGenre }) => {
         })
     }
     setSortBy(select)
-    movies.sort((a, b) => 
+    setMovies(movies.sort((a, b) => 
     {
       switch(sortby) {
       case SORT_BY_AZ:
@@ -59,7 +59,7 @@ const Results = ({ selectedGenre }) => {
       default:
         return 0;
     }
-  });
+  }));
     e.target.style.opacity = '1'
     e.target.style.transform = 'scale(1.2)'
     e.target.addEventListener('mouseleave', (e) => {
